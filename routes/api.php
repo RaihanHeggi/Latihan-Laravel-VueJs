@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get("todolist/delete/{id}",'APITodoList@deleteData');
-Route::post("todolist/update/{id}",'APITodoList@updateData');
-Route::post("todolist/create",'APITodoList@addData');
-Route::get("todolist/list",'APITodoList@showData');
+Route::get("todolist/delete/{id}",'APITodoListController@deleteData');
+Route::post("todolist/update/{id}",'APITodoListController@updateData');
+Route::post("todolist/create",'APITodoListController@addData');
+Route::get("todolist/list",'APITodoListController@showData');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
