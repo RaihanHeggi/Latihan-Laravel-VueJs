@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class APITodoListController extends Controller
+class ApiTodoListController extends Controller
 {
     public function showData(){ 
         $result = DB::table('todolist')->orderByDesc('id')->get();
