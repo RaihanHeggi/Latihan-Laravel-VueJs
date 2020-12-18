@@ -7,34 +7,34 @@ use Illuminate\Http\Request;
 class APITodoList extends Controller
 {
     public function showData(){ 
-        $result = DB::table(table:"todolist")->orderBy(column: 'id', direction: 'desc')->get();
+        $result = DB::table('todolist')->orderByDesc('id')->get();
         return response()->json($result);
     }
 
     public function addData() {
-        $content = request(key: "content");
-        DB::table(table:"todolist")
+        $content = request('content');
+        DB::table('todolist')
             -> insert([
-                'created_at' => date(format:'Y-m-d H:i:s'),
+                'created_at' => date()->format('Y-m-d H:i:s'),
                 'content' => $content
             ]);
         return response()->json(['status' => true, 'message'=>'data berhasil ditambahkan !']);       
     }
 
     public function updateData($id){
-        $content = request(key: "content");
-        DB::table(table:"todolist")
-            -> where(column:'id',$id)
+        $content = request('content');
+        DB::table('todolist')
+            -> where('id',$id)
             -> update([
-                'updated_at' => date(format:'Y-m-d H:i:s'),
+                'updated_at' => date()->format('Y-m-d H:i:s'),
                 'content' => $content
             ]);
         return response()->json(['status' => true, 'message'=>'data berhasil diperbarui !']);       
     }
     
     public function deleteData($id){
-        DB::table(table:"todolist")
-            -> where(column:'id',$id);
+        DB::table('todolist')
+            -> where('id',$id)
             -> delete();
         return response()->json(['status'=>true, 'message'=> 'data berhasil dihapus !']);
     }
