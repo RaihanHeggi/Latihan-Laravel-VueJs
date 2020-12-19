@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApiTodoListController extends Controller
 {
@@ -15,7 +16,7 @@ class ApiTodoListController extends Controller
         $content = request('content');
         DB::table('todolist')
             -> insert([
-                'created_at' => date()->format('Y-m-d H:i:s'),
+                'created_at' => 'datetime:Y-m-d',
                 'content' => $content
             ]);
         return response()->json(['status' => true, 'message'=>'data berhasil ditambahkan !']);       
@@ -26,7 +27,7 @@ class ApiTodoListController extends Controller
         DB::table('todolist')
             -> where('id',$id)
             -> update([
-                'updated_at' => date()->format('Y-m-d H:i:s'),
+                'updated_at' => 'datetime:Y-m-d',
                 'content' => $content
             ]);
         return response()->json(['status' => true, 'message'=>'data berhasil diperbarui !']);       

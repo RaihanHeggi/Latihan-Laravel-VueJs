@@ -16,7 +16,7 @@ class CreateTodolistTable extends Migration
         Schema::create('todolist', function (Blueprint $table) {
             $table->bigIncrement('id');
             $table->timestamps();
-            $table->text('content')->nullable();
+            $table->text('content')->nullable($value=True);
         });
     }
 
