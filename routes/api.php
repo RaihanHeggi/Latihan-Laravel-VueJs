@@ -16,7 +16,7 @@ use App\Http\Controllers\ApiTodoListController;
 */
 Route::get("todolist/delete/{id}", [ApiTodoListController::class, "deleteData"]);
 Route::post("todolist/update/{id}",[ApiTodoListController::class, "updateData"]);
-Route::post("todolist/create",[ApiTodoListController::class, "addData"]);
+Route::post("todolist",[ApiTodoListController::class, "addData"]);
 Route::get("todolist/list",[ApiTodoListController::class, "showData"]);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

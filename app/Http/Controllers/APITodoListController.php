@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ApiTodoListController extends Controller
 {
@@ -16,7 +17,7 @@ class ApiTodoListController extends Controller
         $content = request('content');
         DB::table('todolist')
             -> insert([
-                'created_at' => 'datetime:Y-m-d',
+                'created_at' => Carbon::now(),
                 'content' => $content
             ]);
         return response()->json(['status' => true, 'message'=>'data berhasil ditambahkan !']);       
@@ -27,7 +28,7 @@ class ApiTodoListController extends Controller
         DB::table('todolist')
             -> where('id',$id)
             -> update([
-                'updated_at' => 'datetime:Y-m-d',
+                'updated_at' => Carbon::now(),
                 'content' => $content
             ]);
         return response()->json(['status' => true, 'message'=>'data berhasil diperbarui !']);       
